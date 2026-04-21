@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de gestión de citas médicas y doctores">
+    <title>Clínica Medical Plus - Gestión de Citas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    <h1>Clínica Medical Plus</h1>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li>
+                        <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#citas" class="nav-link" data-section="citas">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span>Citas Médicas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#medicos" class="nav-link" data-section="medicos">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span>Médicos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reportes" class="nav-link" data-section="reportes">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <div class="user-details">
+                        <p class="user-name">Admin User</p>
+                        <p class="user-role">Administrador</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+            </header>
+
+            <main class="main-content">
+                <section id="dashboard" class="content-section active">
+                    <div class="page-header">
+                        <h2>Dashboard</h2>
+                        <p class="page-subtitle">Resumen general del sistema</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <article class="stat-card">
+                            <div class="stat-icon stat-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Citas Hoy</h3>
+                                <p class="stat-value" id="citasHoy">0</p>
+                                <span class="stat-label">Agendadas</span>
+                            </div>
+                        </article>
+
+                        <article class="stat-card">
+                            <div class="stat-icon stat-success">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Completadas</h3>
+                                <p class="stat-value" id="citasCompletadas">0</p>
+                                <span class="stat-label">Este mes</span>
+                            </div>
+                        </article>
+
+                        <article class="stat-card">
+                            <div class="stat-icon stat-info">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Médicos Activos</h3>
+                                <p class="stat-value" id="medicosActivos">0</p>
+                                <span class="stat-label">Registrados</span>
+                            </div>
+                        </article>
+
+                        <article class="stat-card">
+                            <div class="stat-icon stat-warning">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <h3 class="stat-title">Pendientes</h3>
+                                <p class="stat-value" id="citasPendientes">0</p>
+                                <span class="stat-label">Por confirmar</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <article class="card">
+                            <header class="card-header">
+                                <h3>Próximas Citas</h3>
+                            </header>
+                            <div class="card-body">
+                                <div class="appointments-list" id="proximasCitas">
+                                    <p class="empty-state">No hay citas próximas</p>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <header class="card-header">
+                                <h3>Actividad Reciente</h3>
+                            </header>
+                            <div class="card-body">
+                                <div class="activity-list" id="actividadReciente">
+                                    <p class="empty-state">No hay actividad reciente</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="citas" class="content-section">
+                    <div class="page-header">
+                        <div>
+                            <h2>Gestión de Citas</h2>
+                            <p class="page-subtitle">Administra las citas médicas</p>
+                        </div>
+                        <button class="btn btn-primary" id="btnNuevaCita">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                            Nueva Cita
+                        </button>
+                    </div>
+
+                    <article class="card">
+                        <header class="card-header">
+                            <h3>Lista de Citas</h3>
+                        </header>
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Paciente</th>
+                                        <th>Médico</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaCitas">
+                                    <tr>
+                                        <td colspan="6" class="empty-state">No hay citas registradas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </section>
+
+                <section id="medicos" class="content-section">
+                    <div class="page-header">
+                        <div>
+                            <h2>Gestión de Médicos</h2>
+                            <p class="page-subtitle">Administra el personal médico</p>
+                        </div>
+                        <button class="btn btn-primary" id="btnNuevoMedico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                            Nuevo Médico
+                        </button>
+                    </div>
+
+                    <article class="card">
+                        <header class="card-header">
+                            <h3>Lista de Médicos</h3>
+                        </header>
+                        <div class="doctors-grid" id="gridMedicos">
+                            <div class="empty-state">No hay médicos registrados</div>
+                        </div>
+                    </article>
+                </section>
+
+                <section id="reportes" class="content-section">
+                    <div class="page-header">
+                        <h2>Reportes</h2>
+                        <p class="page-subtitle">Estadísticas y análisis del sistema</p>
+                    </div>
+
+                    <article class="card">
+                        <div class="card-body">
+                            <p class="empty-state">Módulo de reportes en desarrollo</p>
+                        </div>
+                    </article>
+                </section>
+
+
+            </main>
+
+            <footer class="footer">
+                <p>&copy; 2026 Clínica Medical Plus. Todos los derechos reservados.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal para Citas -->
+    <div id="modalCita" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalCitaTitulo">Nueva Cita</h3>
+                <button class="modal-close" onclick="cerrarModal('modalCita')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formCita" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pacienteNombre">Nombre del Paciente</label>
+                            <input type="text" id="pacienteNombre" name="pacienteNombre" placeholder="Ej: Juan Pérez"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pacienteTelefono">Teléfono</label>
+                            <input type="tel" id="pacienteTelefono" name="pacienteTelefono"
+                                placeholder="Ej: 123-456-7890" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="medicoSelect">Médico</label>
+                            <select id="medicoSelect" name="medicoSelect" required>
+                                <option value="">Seleccione un médico</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fechaCita">Fecha</label>
+                            <input type="date" id="fechaCita" name="fechaCita" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="horaCita">Hora</label>
+                            <input type="time" id="horaCita" name="horaCita" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivoConsulta">Motivo de Consulta</label>
+                        <textarea id="motivoConsulta" name="motivoConsulta" rows="3"
+                            placeholder="Describe el motivo de la consulta..." required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Guardar Cita
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                            onclick="cerrarModal('modalCita')">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Médicos -->
+    <div id="modalMedico" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalMedicoTitulo">Nuevo Médico</h3>
+                <button class="modal-close" onclick="cerrarModal('modalMedico')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formMedico" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="medicoNombre">Nombre Completo</label>
+                            <input type="text" id="medicoNombre" name="medicoNombre"
+                                placeholder="Dr./Dra. Nombre Apellido" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medicoEspecialidad">Especialidad</label>
+                            <input type="text" id="medicoEspecialidad" name="medicoEspecialidad"
+                                placeholder="Ej: Cardiología" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="medicoTelefono">Teléfono</label>
+                            <input type="number" id="medicoTelefono" name="medicoTelefono" placeholder="123-456-7890"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medicoEmail">Correo Electrónico</label>
+                            <input type="email" id="medicoEmail" name="medicoEmail" placeholder="doctor@email.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="medicoLicencia">Número de Licencia</label>
+                            <input type="text" id="medicoLicencia" name="medicoLicencia" placeholder="LIC-123456"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medicoHorario">Horario de Atención</label>
+                            <input type="text" id="medicoHorario" name="medicoHorario"
+                                placeholder="Lunes a Viernes 8:00 - 17:00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="medicoLinkedin">LinkedIn</label>
+                            <input type="url" id="medicoLinkedin" name="medicoLinkedin"
+                                placeholder="https://www.linkedin.com/in/doctor" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            Guardar Médico
+                        </button>
+                        <button type="button" class="btn btn-secondary"
+                            onclick="cerrarModal('modalMedico')">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
